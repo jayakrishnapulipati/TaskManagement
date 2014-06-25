@@ -1,0 +1,50 @@
+#banner { padding: 15px; background-color: #06b; color: white; font-size: large; border-bottom: 1px solid #ccc;
+    background: url(../images/bg.gif) repeat-x; text-align: center }
+#banner a { color: white; }
+
+div#sidebar {
+	margin-top: 111px;
+}
+div#login_form {
+    margin-top: 148px;
+    width: 582px;
+    margin-left: 356px;
+}
+#create_task, #update_task {
+    margin-left: 109px;
+    margin-top: 111px;
+    width: 924px;
+}
+.pull-right{
+	margin-left:10px;
+}
+
+#tasksList, #editTasks {
+	margin-top: 111px;
+}
+
+#tasksList ul {
+    list-style: none;
+    cursor: pointer;
+}
+
+.alert-error {
+    color: #b94a48;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+}
+
+div#errorListMsg {
+    width: 565px;
+    margin-left: 19px;
+    height: 51px;
+}
+
+div#update_task {
+    width: 476px;
+}
+
+div.search {
+    width: 142px;
+    margin-left: 465px;
+}
