@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Management</title>
+    <link href="all.min.css" rel="stylesheet" />
+    <link href="lib.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="navBar"></div>
+    <div id="content"></div>
+    <script type="text/x-handlebars-template" id="list_navBar">
+        <div class="navbar navbar-fixed-top navbar-default" role="navigation">
+            <div class="container">
+                <h4 class="navbar-text">Task Management</h4>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="">Dashboards</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a id="createTask">Create Task</a></li>
+                            <li><a id="logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-handlebars-template" id="list_content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container" id="tasksList">
+                    <div id="errorListMsg" class="alert alert-error">
+                        <em>Yet...No Tasks available <a id="create">Create Task</a></em>
+                    </div>
+                    <div class="search">
+                        <input type="text" name="query" id="query" class="form-control" placeholder="Search" />
+                        <button id="query_search" class="btn btn-default">Submit</button>
+                    </div>
+                    <div>
+                        <ul class="lead" id="task-list">
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="pagination">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" id="editTasks">
+                <p align="center">Detailed Information</p>
+                <table class="table table-hover">
+                    <tr>
+                        <th>Summary</th>
+                        <td id="_summary"></td>
+                    </tr>
+                    <tr>
+                        <th>Priority</th>
+                        <td id="_priority"></td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td id="_date"></td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td id="_description"></td>
+                    </tr>
+                    <tr>
+                        <th>EstimatedTime</th>
+                        <td id="_estimatedTime"></td>
+                    </tr>
+                    <tr>
+                        <th><button class="btn btn-default" id="editTask">Edit</button></th>
+                        <th></th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-handlebars-template" id="create_form">
+        <div class="container">
+            <div class="panel panel-default" id="create_task">
+                <div class="panel-heading" align="center">Create Task</div>
+                <div class="panel-body" id="newTask">
+                    <form id="myform">
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" class="form-control" placeholder="Summary" name="summary" id="summary"/>
+                        </div><br/>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <select class="form-control" name="priority" id="priority">
+                                <option value="blocker">Blocker</option>
+                                <option value="critical">Critical</option>
+                                <option value="major">Major</option>
+                                <option value="minor">Minor</option>
+                                <option value="trivial">Trivial</option>
+                            </select>
+                        </div><br/>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="date" class="form-control" placeholder="Select date" name="date" id="date" />
+                        </div><br/>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" class="form-control" placeholder="Description" name="desc" id="description" />
+                        </div><br/>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" class="form-control" placeholder="Original Estimate" name="est" id="estimatedTime" />
+                        </div><br/>
+                        <div class="pull-right">
+                            <input type="button" value="Create" class="btn btn-primary " id="createBtn" />
+                            <input type="reset" value="Reset" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-handlebars-template" id="update_form">
+        <div class="container">
+            <div class="panel panel-default" id="update_task">
+                <div class="panel-heading" align="center">Update Task</div>
+                <div class="panel-body" id="updateTask">
+                    <form>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" class="form-control" placeholder="Summary" name="summary" id="update_summary"/>
+                        </div><br/>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <select class="form-control" name="priority" id="update_priority">
+                                <option value="blocker">Blocker</option>
+                                <option value="critical">Critical</option>
+                                <option value="major">Major</option>
+                                <option value="minor">Minor</option>
+                                <option value="trivial">Trivial</option>
+                            </select>
+                        </div><br/>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="date" class="form-control" placeholder="Select date" name="date" id="update_date" />
+                        </div><br/>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" class="form-control" placeholder="Description" name="desc" id="update_desc" />
+                        </div><br/>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" class="form-control" placeholder="Original Estimate" name="est" id="update_est" />
+                        </div><br/>
+                        <div class="pull-right">
+                            <input type="button" value="Update" class="btn btn-primary" id="updateBtn" />
+                            <input type="reset" value="Reset" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script src="lib.min.js"></script>
+    <script src="all.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Management</title>
+    <link href="all.min.css" rel="stylesheet" />
+    <link href="lib.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="navBar">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <h4>Task Management</h4>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="panel panel-default" id="login_form">
+                <div class="panel-heading" align="center">LOGIN</div>
+                <div class="panel-body" id="login">
+                    <form>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" class="form-control" placeholder="UserName" id="username" name="username"/>
+                        </div><br/>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="password" class="form-control" placeholder="Password" id="password" name="password"/>
+                        </div><br/>
+                        <input type="reset" class="btn btn-primary pull-right" id="reset" value="Reset">
+                        <input type="submit" class="btn btn-primary pull-right" id="submit" value="Login">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib.min.js"></script>
+    <script src="all.min.js"></script>
+</body>
+</html>
